@@ -82,7 +82,7 @@
     article.innerHTML = `
       <header class="cs-head" id="cs-overview">
         <span class="mono">Case study</span>
-        <h2 class="cs-title" id="cs-title">${esc(p.name)} <span class="serif-sub">${esc(p.tagline)}</span></h2>
+        <h2 class="cs-title" id="cs-title">${esc(p.name)} <span class="subtitle">${esc(p.tagline)}</span></h2>
         <p class="cs-summary">${esc(p.summary)}</p>
         <div class="cs-facts">
           ${fact("Year", p.year)}${fact("Role", p.role)}${fact("Scope", p.scope)}${fact("Platform", p.platform)}
@@ -144,7 +144,7 @@
       <button type="button" class="next" id="next-case">
         <div>
           <span class="mono">Next case study</span>
-          <span class="next-name">${esc(next.name)} <span class="serif-sub">${esc(next.tagline)}</span></span>
+          <span class="next-name">${esc(next.name)} <span class="subtitle">${esc(next.tagline)}</span></span>
         </div>
         <span class="mono continue">Continue →</span>
       </button>`;
