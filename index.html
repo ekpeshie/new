@@ -11,6 +11,7 @@
     var t = "light";
     try { t = localStorage.getItem("nuel-theme") || "light"; } catch (e) {}
     document.documentElement.dataset.theme = t;
+    document.documentElement.classList.add("js");
   })();
 </script>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -43,10 +44,20 @@
       <div class="mono"><span id="clock"></span></div>
       <img class="portrait" src="assets/images/emmanuel.jpg" alt="Emmanuel Abu-Ekpeshie" width="48" height="48">
       <h1 class="sr-only">Emmanuel Abu-Ekpeshie, product designer</h1>
-      <div class="intro">
+      <div class="intro" id="intro">
         <p>Hey, I’m Emmanuel 👋</p>
-        <p>I design digital products that make life a little easier. Over the past 4+ years, I’ve worked across fintech, foodtech, and consumer apps, helping turn messy problems into thoughtful, intuitive experiences.</p>
-        <p>I like asking questions, figuring out how things work, and finding better ways to make them work for people.</p>
+        <p>I’m a product designer who enjoys turning complex problems into simple, thoughtful digital experiences.</p>
+        <div class="intro-more" id="intro-more">
+          <div>
+            <p>I’m currently designing at <a href="https://apps.apple.com/app/tinglescore-dating-assistant/id6739454822" target="_blank" rel="noopener">Tinglemore</a>. Previously, I led design at <a href="https://www.8x.social/en/for-brands" target="_blank" rel="noopener">8x Social</a> and <a href="https://8x.sale/reps" target="_blank" rel="noopener">8x Sales</a>, and was part of the design team at <a href="https://www.platehack.com" target="_blank" rel="noopener">PlateHack</a>, an AI-powered foodtech startup, and Sabinovates, a design and development agency.</p>
+            <p>Over the past 4+ years, I’ve worked across different products and industries, figuring out how to make digital experiences more intuitive, useful, and enjoyable. I care about understanding the people behind the problems, asking the right questions, and creating products that look good but, more importantly, work well for the people using them.</p>
+            <p>Outside of design, I’m a Real Madrid fan, love the LA Lakers, and I’m curious about how technology shapes the way we live, think, and interact with the world.</p>
+          </div>
+        </div>
+        <button type="button" class="intro-toggle" id="intro-toggle" aria-expanded="false" aria-controls="intro-more">
+          <span class="intro-toggle-label">more about me</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
       </div>
       <div class="btn-row">
         <a href="https://calendly.com/abuekpeshie/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>

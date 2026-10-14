@@ -81,8 +81,28 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 /* ---------- Hero ---------- */
 .hero { padding: clamp(40px, 8vw, 64px) 0 clamp(40px, 8vw, 56px); display: flex; flex-direction: column; gap: 16px; }
 .hero .mono { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; }
-.intro { max-width: 56ch; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.65; }
+.intro { max-width: 56ch; font-size: 14px; line-height: 1.65; }
 .intro p { margin: 0; text-wrap: pretty; }
+.intro p + p, .intro-more p { margin-top: 12px; }
+.intro a { border-bottom: 1px dotted var(--muted); transition: border-color 200ms; }
+.intro a:hover { text-decoration: none; color: var(--fg); border-bottom-color: var(--fg); }
+/* Collapsed only when JS can expand it again. Animates height via grid rows. */
+.intro-more { display: grid; grid-template-rows: 1fr; }
+.intro-more > div { overflow: hidden; min-height: 0; }
+.js .intro-more {
+  grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 420ms var(--ease), opacity 260ms ease;
+}
+.js .intro.is-open .intro-more { grid-template-rows: 1fr; opacity: 1; transition: grid-template-rows 420ms var(--ease), opacity 320ms ease 80ms; }
+.intro-toggle {
+  display: none; align-items: center; gap: 6px; margin-top: 12px; padding: 0;
+  background: none; border: none; font: inherit; font-size: 13px; color: var(--muted); cursor: pointer;
+  transition: color 200ms;
+}
+.js .intro-toggle { display: inline-flex; }
+.intro-toggle:hover { color: var(--fg); }
+.intro-toggle svg { transition: transform 300ms var(--ease); }
+.intro.is-open .intro-toggle svg { transform: rotate(180deg); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .hero .btn-row { padding-top: 4px; }
 .portrait { display: block; width: 48px; height: 48px; object-fit: cover; background: var(--surface); }
@@ -280,5 +300,5 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .next .continue { color: var(--fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .page, .drawer, .scrim, .cs-map, .cs-map .tick, .project .shot img { transition: none !important; }
+  .page, .drawer, .scrim, .intro-more, .cs-map, .cs-map .tick, .project .shot img { transition: none !important; }
 }

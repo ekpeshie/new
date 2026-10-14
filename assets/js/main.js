@@ -36,6 +36,19 @@
   });
   syncThemeLabel();
 
+  /* ---------- Intro "more about me" ---------- */
+  const intro = $("intro");
+  const introMore = $("intro-more");
+  const introToggle = $("intro-toggle");
+  introMore.inert = true;
+  introToggle.addEventListener("click", () => {
+    const open = !intro.classList.contains("is-open");
+    intro.classList.toggle("is-open", open);
+    introMore.inert = !open;
+    introToggle.setAttribute("aria-expanded", String(open));
+    introToggle.querySelector(".intro-toggle-label").textContent = open ? "show less" : "more about me";
+  });
+
   /* ---------- Tabs ---------- */
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   function selectTab(tab, focus) {
