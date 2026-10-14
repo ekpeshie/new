@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Emmanuel Abu-Ekpeshie — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+html{--backdrop:#e8e8e5;--bg:#fbfbf9;--bg-glass:rgba(251,251,249,0.72);--fg:#1d1d1f;--fg-strong:#000000;--muted:#6e6e73;--muted2:#545458;--text2:#3a3a3c;--line:#e3e3df;--line2:#ececE8;--line-strong:#d4d4cf;--surface:#f1f1ee;--drawer:#ffffff;--card:#f5f5f2;--card-line:#e6e6e2;--hover:#efefec;--handle:#d0d0cb;--faint:#c2c2bd;--scrim:rgba(20,20,18,0.22);--shadow:-24px 0 80px rgba(0,0,0,0.12);color-scheme:light}
+html[data-theme="dark"]{--backdrop:#050505;--bg:#111110;--bg-glass:rgba(17,17,16,0.72);--fg:#ecece8;--fg-strong:#ffffff;--muted:#8f8f8a;--muted2:#a9a9a3;--text2:#c9c9c3;--line:#232321;--line2:#1d1d1b;--line-strong:#2c2c2a;--surface:#1a1a19;--drawer:#171716;--card:#1c1c1a;--card-line:#262624;--hover:#222220;--handle:#3a3a37;--faint:#4a4a46;--scrim:rgba(0,0,0,0.55);--shadow:-24px 0 80px rgba(0,0,0,0.5);color-scheme:dark}
+html,body{margin:0;padding:0;background:var(--backdrop);color:var(--fg);-webkit-font-smoothing:antialiased}
+html.theme-anim *{transition:background-color .35s ease,color .35s ease,border-color .35s ease !important}
+*{box-sizing:border-box}
+a{color:var(--fg);text-decoration:none}
+a:hover{color:var(--fg-strong);text-decoration:underline;text-underline-offset:3px}
+::selection{background:var(--fg);color:var(--bg)}
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh; background:var(--bg); font-family:-apple-system, BlinkMacSystemFont, 'Geist', system-ui, sans-serif; font-size:14px; line-height:1.6; text-transform:lowercase; letter-spacing:0.005em; transition:transform 560ms cubic-bezier(0.32,0.72,0,1), border-radius 560ms; transform:{{ pageTransform }}; transform-origin:{{ pageOrigin }}; border-radius:{{ pageRadius }}; overflow:clip;">
+  <header style="position:sticky; top:0; z-index:20; background:var(--bg-glass); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--line2);">
+    <div style="max-width:760px; margin:0 auto; padding:0 24px; height:56px; display:flex; justify-content:space-between; align-items:center; gap:16px;">
+      <a href="#top" style="font-weight:500; font-size:14px; white-space:nowrap;">Emmanuel Abu-Ekpeshie</a>
+      <nav style="display:flex; align-items:center; gap:clamp(14px, 3vw, 18px); font-size:13px;">
+        <a href="uploads/Emmanuel_Abu-Ekpeshie_Resume_Updated.pdf" download="Emmanuel_Abu-Ekpeshie_Resume.pdf" target="_blank" style="color:var(--fg); white-space:nowrap;">download resume ↓</a>
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+          <a href="https://calendly.com/abuekpeshie/30min" target="_blank" style="color:var(--muted); white-space:nowrap;">book a call ↗</a>
+        </sc-if>
+        <button onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" style="flex:none; width:36px; height:36px; padding:0; border-radius:50%; border:1px solid var(--line-strong); background:transparent; color:var(--fg); display:inline-flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:var(--hover);">
+          <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+          </sc-if>
+          <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+          </sc-if>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <div style="max-width:760px; margin:0 auto; padding:0 24px;">
+
+    <section id="top" style="padding:clamp(40px, 8vw, 64px) 0 clamp(40px, 8vw, 56px); display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px 10px; font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">
+        
+        
+        
+        <span>{{ time }}</span>
+      </div>
+      <h1 style="margin:0; font-weight:400; font-size:clamp(17px, 2.2vw, 19px); line-height:1.45; letter-spacing:-0.005em; text-wrap:pretty;">Hey, I'm Emmanuel, currently leading redesign at Tinglemore</h1>
+      <p style="margin:0; max-width:56ch; color:var(--muted2); font-size:14px; line-height:1.65; text-wrap:pretty;">Hey hey, i'm Emmanuel , currently part of the design team at tinglemore. previously led design at 8x platehack, i was also a ux researcher at lloyd's bank (kind of</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; padding-top:4px;">
+        <a href="https://calendly.com/abuekpeshie/30min" target="_blank" style="display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 16px; border-radius:999px; background:var(--fg); color:var(--bg); font-weight:400; font-size:13px; text-decoration:none;">Book a 30-min call</a>
+        <a href="https://www.linkedin.com/in/emmanuel-abu-ekpeshie/" target="_blank" style="display:inline-flex; align-items:center; height:38px; padding:0 16px; border-radius:999px; border:1px solid var(--line-strong); font-size:13px; text-decoration:none;">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <section id="work" style="display:flex; flex-direction:column; gap:clamp(28px, 5vw, 40px); padding-bottom:clamp(72px, 13vw, 112px); scroll-margin-top:72px;">
+      <div role="tablist" style="display:flex; gap:24px; flex-wrap:wrap;">
+        <button onClick="{{ tabWork }}" style="height:36px; padding:0; border-radius:0; border:none; cursor:pointer; font:inherit; font-size:14px; letter-spacing:0.01em; background:transparent; color:{{ tabWorkFg }}; border-bottom:1.5px solid {{ tabWorkLine }}; transition:color 200ms, border-color 200ms;" style-hover="color:var(--fg);">work</button>
+        <button onClick="{{ tabExperience }}" style="height:36px; padding:0; border-radius:0; border:none; cursor:pointer; font:inherit; font-size:14px; letter-spacing:0.01em; background:transparent; color:{{ tabExperienceFg }}; border-bottom:1.5px solid {{ tabExperienceLine }}; transition:color 200ms, border-color 200ms;" style-hover="color:var(--fg);">experience</button>
+        <button onClick="{{ tabWords }}" style="height:36px; padding:0; border-radius:0; border:none; cursor:pointer; font:inherit; font-size:14px; letter-spacing:0.01em; background:transparent; color:{{ tabWordsFg }}; border-bottom:1.5px solid {{ tabWordsLine }}; transition:color 200ms, border-color 200ms;" style-hover="color:var(--fg);">testimonials</button>
+        <button onClick="{{ tabTinkerings }}" style="height:36px; padding:0; border-radius:0; border:none; cursor:pointer; font:inherit; font-size:14px; letter-spacing:0.01em; background:transparent; color:{{ tabTinkeringsFg }}; border-bottom:1.5px solid {{ tabTinkeringsLine }}; transition:color 200ms, border-color 200ms;" style-hover="color:var(--fg);">playground</button>
+      </div>
+
+      <sc-if value="{{ isWork }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:clamp(40px, 7vw, 56px);">
+          <article onClick="{{ openFino }}" style="cursor:pointer; display:flex; flex-direction:column; gap:12px;">
+            <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+              <img src="https://framerusercontent.com/images/TaWfBrXKWakQZEtTZp015q8nRqY.png" alt="fino" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08); transition:transform 800ms cubic-bezier(0.2,0.7,0.2,1);" style-hover="transform:scale(1.02);">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="align-self:flex-start; font-size:15px; line-height:1.4; color:var(--fg); border-bottom:1px dotted var(--muted);">fino</span>
+              <p style="margin:0; font-size:14px; line-height:1.55; color:var(--muted); text-wrap:pretty;">tax management for german freelancers — without the dread.</p>
+            </div>
+          </article>
+          <article onClick="{{ openPlatehack }}" style="cursor:pointer; display:flex; flex-direction:column; gap:12px;">
+            <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+              <img src="https://framerusercontent.com/images/bFQiD0Yc0xcUq8sqtexlfqddNtI.png" alt="platehack" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08); transition:transform 800ms cubic-bezier(0.2,0.7,0.2,1);" style-hover="transform:scale(1.02);">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="align-self:flex-start; font-size:15px; line-height:1.4; color:var(--fg); border-bottom:1px dotted var(--muted);">platehack</span>
+              <p style="margin:0; font-size:14px; line-height:1.55; color:var(--muted); text-wrap:pretty;">a ground-up redesign of an ai nutrition and meal-delivery platform.</p>
+            </div>
+          </article>
+          <article onClick="{{ openMypiitch }}" style="cursor:pointer; display:flex; flex-direction:column; gap:12px;">
+            <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+              <img src="https://framerusercontent.com/images/JIrTRs5PIj1iTUEOTWXiYhddo.png" alt="mypiitch" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08); transition:transform 800ms cubic-bezier(0.2,0.7,0.2,1);" style-hover="transform:scale(1.02);">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="align-self:flex-start; font-size:15px; line-height:1.4; color:var(--fg); border-bottom:1px dotted var(--muted);">mypiitch</span>
+              <p style="margin:0; font-size:14px; line-height:1.55; color:var(--muted); text-wrap:pretty;">a hiring workspace that replaced four tabs and a private spreadsheet.</p>
+            </div>
+          </article>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isExperience }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; border-top:1px solid var(--line2);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px 0; border-bottom:1px solid var(--line2);">
+        <span style="display:flex; flex-direction:column; gap:2px;"><span>Product Designer</span><span style="color:var(--muted);">Tinglemore</span></span>
+        <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">2025 — Now</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px 0; border-bottom:1px solid var(--line2);">
+        <span style="display:flex; flex-direction:column; gap:2px;"><span>Independent Product Designer</span><span style="color:var(--muted);">Fintech &amp; health clients</span></span>
+        <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">2025</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px 0; border-bottom:1px solid var(--line2);">
+        <span style="display:flex; flex-direction:column; gap:2px;"><span>UX/UI Designer</span><span style="color:var(--muted);">Sabinovates</span></span>
+        <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">2024 — 2025</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px 0; border-bottom:1px solid var(--line2);">
+        <span style="display:flex; flex-direction:column; gap:2px;"><span>Product Designer</span><span style="color:var(--muted);">Flo Hiring</span></span>
+        <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">2022</span>
+      </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isWords }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:32px 40px;">
+        <figure style="margin:0; display:flex; flex-direction:column; gap:14px;">
+          <blockquote style="margin:0; font-size:14px; line-height:1.6; text-wrap:pretty;">“Emmanuel transformed our product with detailed, user-focused design. Stunning and practical — the process was smooth and inspiring.”</blockquote>
+          <figcaption style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Bolaji — Co-founder, Platehack</figcaption>
+        </figure>
+        <figure style="margin:0; display:flex; flex-direction:column; gap:14px;">
+          <blockquote style="margin:0; font-size:14px; line-height:1.6; text-wrap:pretty;">“His creativity and keen eye for design transformed our product’s interface, making it both visually appealing and highly functional.”</blockquote>
+          <figcaption style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Chris — Founder, Flo Hiring</figcaption>
+        </figure>
+        <figure style="margin:0; display:flex; flex-direction:column; gap:14px;">
+          <blockquote style="margin:0; font-size:14px; line-height:1.6; text-wrap:pretty;">“He has always delivered within the agreed timeframe. His attention to detail and desire to understand what he’s working on make him a pleasure to work with.”</blockquote>
+          <figcaption style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Peter — Product Designer, Eligibie.ai</figcaption>
+        </figure>
+        <figure style="margin:0; display:flex; flex-direction:column; gap:14px;">
+          <blockquote style="margin:0; font-size:14px; line-height:1.6; text-wrap:pretty;">“A designer who’ll pour their heart and soul into your project — a great addition to any team.”</blockquote>
+          <figcaption style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Naomi — Product Designer, Knight Frank</figcaption>
+        </figure>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isTinkerings }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+            <img src="https://framerusercontent.com/images/AHqtNfYYBLAAJhP73ZlF2myrs.png" alt="Exploration 1" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+          </div>
+          <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+            <img src="https://framerusercontent.com/images/xHBXWWU4QDgPp1OI2klWsJYB6w.png" alt="Exploration 2" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+          </div>
+          <div style="aspect-ratio:16/10; background:var(--surface); display:flex; align-items:center; justify-content:center; padding:clamp(18px, 7%, 56px); overflow:hidden;">
+            <img src="https://framerusercontent.com/images/WueifjBWe36Tk8XQrk8apdFID4.png" alt="Exploration 3" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <footer style="display:flex; flex-direction:column; gap:24px; padding:clamp(40px, 8vw, 56px) 0 32px; border-top:1px solid var(--line);">
+      <h2 style="margin:0; font-weight:400; font-size:clamp(17px, 2.2vw, 19px); line-height:1.45; text-wrap:pretty;">Got a hard problem? I’d like to hear about it.</h2>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://calendly.com/abuekpeshie/30min" target="_blank" style="display:inline-flex; align-items:center; height:38px; padding:0 16px; border-radius:999px; background:var(--fg); color:var(--bg); font-weight:400; font-size:13px; text-decoration:none;">Book a 30-min call</a>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:clamp(24px, 6vw, 40px); font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">
+        <span>© 2026 Emmanuel Abu-Ekpeshie</span>
+        <div style="display:flex; gap:18px; flex-wrap:wrap;">
+          <a href="https://www.linkedin.com/in/emmanuel-abu-ekpeshie/" target="_blank" style="color:var(--muted);">LinkedIn</a>
+          <a href="https://dribbble.com/emmanuelabu" target="_blank" style="color:var(--muted);">Dribbble</a>
+          <a href="https://x.com/abu_nuel" target="_blank" style="color:var(--muted);">X</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ close }}" style="{{ overlayStyle }}"></div>
+  <div role="dialog" aria-modal="true" style="{{ drawerStyle }}">
+    <div onPointerDown="{{ dragStart }}" onPointerMove="{{ dragMove }}" onPointerUp="{{ dragEnd }}" onPointerCancel="{{ dragEnd }}" style="flex:none; cursor:grab; touch-action:none; user-select:none; border-bottom:1px solid var(--line); padding:10px clamp(16px, 4vw, 20px) 12px;">
+      <sc-if value="{{ isBottom }}" hint-placeholder-val="{{ true }}">
+        <div style="width:40px; height:4px; border-radius:4px; background:var(--handle); margin:0 auto 10px;"></div>
+      </sc-if>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">
+        <span>{{ cur.n }} / 03 — {{ cur.name }}</span>
+        <button onClick="{{ close }}" style="display:inline-flex; align-items:center; gap:8px; background:transparent; border:1px solid var(--line-strong); color:var(--fg); border-radius:999px; height:36px; padding:0 14px; font:inherit; cursor:pointer;" style-hover="background:var(--hover);">Close <span style="color:var(--muted);">esc</span></button>
+      </div>
+    </div>
+
+    <div ref="{{ scrollRef }}" style="flex:1; overflow-y:auto; overscroll-behavior:contain;">
+      <article style="max-width:760px; margin:0 auto; padding:clamp(28px, 6vw, 48px) clamp(20px, 5vw, 24px) 80px; display:flex; flex-direction:column; gap:clamp(40px, 7vw, 56px); font-family:-apple-system, BlinkMacSystemFont, 'Geist', system-ui, sans-serif; font-size:14px; line-height:1.65; color:var(--fg);">
+
+        <header style="display:flex; flex-direction:column; gap:20px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Case study</span>
+          <h2 style="margin:0; font-weight:400; font-size:clamp(22px, 3.4vw, 26px); line-height:1.25; letter-spacing:-0.015em; text-transform:lowercase;">{{ cur.name }} <span style="display:block; font-family:'Instrument Serif', serif; font-style:italic; color:var(--muted2);">{{ cur.tagline }}</span></h2>
+          <p style="margin:0; font-size:15px; line-height:1.6; color:var(--text2); text-wrap:pretty;">{{ cur.summary }}</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:16px 24px; padding-top:12px; border-top:1px solid var(--line);">
+            <div style="display:flex; flex-direction:column; gap:4px; padding-top:12px;"><span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Year</span><span>{{ cur.year }}</span></div>
+            <div style="display:flex; flex-direction:column; gap:4px; padding-top:12px;"><span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Role</span><span>{{ cur.role }}</span></div>
+            <div style="display:flex; flex-direction:column; gap:4px; padding-top:12px;"><span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Scope</span><span>{{ cur.scope }}</span></div>
+            <div style="display:flex; flex-direction:column; gap:4px; padding-top:12px;"><span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Platform</span><span>{{ cur.platform }}</span></div>
+          </div>
+        </header>
+
+        <div style="border-radius:12px; overflow:hidden; background:var(--surface); border:1px solid var(--line); margin:0 -8px;">
+          <img src="{{ cur.hero }}" alt="{{ cur.name }}" style="width:100%; display:block;">
+        </div>
+
+        <section style="display:flex; flex-direction:column; gap:16px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">01 — Context</span>
+          <sc-for list="{{ cur.context }}" as="p" hint-placeholder-count="2">
+            <p style="margin:0; color:var(--text2); text-wrap:pretty;">{{ p }}</p>
+          </sc-for>
+          <blockquote style="margin:16px 0 0; padding:24px 0 0; border-top:1px solid var(--line); font-size:16px; line-height:1.5; letter-spacing:-0.005em; text-wrap:pretty;"><span style="display:block; font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted); letter-spacing:0; margin-bottom:10px;">The brief</span>{{ cur.challenge }}</blockquote>
+        </section>
+
+        <section style="display:flex; flex-direction:column; gap:16px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">02 — Discovery</span>
+          <p style="margin:0; color:var(--text2); text-wrap:pretty;">{{ cur.researchIntro }}</p>
+          <div style="display:flex; flex-direction:column; margin-top:8px;">
+            <sc-for list="{{ cur.research }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex; flex-direction:column; gap:10px; padding:20px 0; border-top:1px solid var(--line);">
+                <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--fg);">{{ r.m }}</span>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px 32px;">
+                  <p style="margin:0; color:var(--muted2); text-wrap:pretty;">{{ r.f }}</p>
+                  <p style="margin:0; color:var(--fg); text-wrap:pretty;">→ {{ r.d }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="display:flex; flex-direction:column; gap:14px; padding:clamp(24px, 5vw, 40px) clamp(20px, 4.5vw, 32px); border-radius:14px; background:var(--card); border:1px solid var(--card-line);">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Core insight</span>
+          <p style="margin:0; font-family:'Instrument Serif', serif; font-size:clamp(20px, 3vw, 24px); line-height:1.3; letter-spacing:-0.01em; text-wrap:balance;">“{{ cur.insight }}”</p>
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted2);">North star — {{ cur.northstar }}</span>
+        </section>
+
+        <section style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted); padding-bottom:8px;">03 — Principles</span>
+          <sc-for list="{{ cur.principles }}" as="pr" hint-placeholder-count="5">
+            <div style="display:grid; grid-template-columns:32px minmax(0, 1fr); gap:12px; padding:16px 0; border-top:1px solid var(--line);">
+              <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted); padding-top:3px;">{{ pr.n }}</span>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span style="font-weight:500; text-transform:lowercase;">{{ pr.t }}</span>
+                <span style="color:var(--muted2); text-wrap:pretty;">{{ pr.d }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="display:flex; flex-direction:column; gap:56px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted); margin-bottom:-32px;">04 — Key screens &amp; decisions</span>
+          <sc-for list="{{ cur.sections }}" as="sec" hint-placeholder-count="3">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <h3 style="margin:0; font-size:15px; font-weight:500; text-transform:lowercase;">{{ sec.title }}</h3>
+              <sc-for list="{{ sec.body }}" as="p" hint-placeholder-count="1">
+                <p style="margin:0; color:var(--text2); text-wrap:pretty;">{{ p }}</p>
+              </sc-for>
+              <sc-if value="{{ sec.hasDecisions }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; flex-direction:column; margin-top:4px;">
+                  <sc-for list="{{ sec.decisions }}" as="dc" hint-placeholder-count="3">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:4px 32px; padding:14px 0; border-top:1px solid var(--line);">
+                      <span style="font-weight:500;">{{ dc.d }}</span>
+                      <span style="color:var(--muted2); text-wrap:pretty;">{{ dc.w }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <div style="display:flex; flex-direction:column; gap:12px; margin:8px -8px 0;">
+                <sc-for list="{{ sec.images }}" as="src" hint-placeholder-count="1">
+                  <div style="border-radius:12px; overflow:hidden; background:var(--surface); border:1px solid var(--line);">
+                    <img src="{{ src }}" alt="{{ sec.title }}" loading="lazy" style="width:100%; display:block;">
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="display:flex; flex-direction:column; gap:16px;">
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">05 — Reflection</span>
+          <sc-for list="{{ cur.reflection }}" as="p" hint-placeholder-count="2">
+            <p style="margin:0; font-size:14px; line-height:1.65; color:var(--fg); text-wrap:pretty;">{{ p }}</p>
+          </sc-for>
+        </section>
+
+        <div onClick="{{ goNext }}" style="cursor:pointer; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding:28px 0 0; border-top:1px solid var(--line);" style-hover="opacity:0.8;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--muted);">Next case study</span>
+            <span style="font-size:18px; letter-spacing:-0.01em; line-height:1.3; text-transform:lowercase;">{{ next.name }} <span style="display:block; font-family:'Instrument Serif', serif; font-style:italic; color:var(--muted2);">{{ next.tagline }}</span></span>
+          </div>
+          <span style="font-family:'Geist Mono', monospace; font-size:11px; text-transform:lowercase; color:var(--fg);">Continue →</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;drawerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;side&quot;,&quot;bottom&quot;],&quot;default&quot;:&quot;side&quot;,&quot;tsType&quot;:&quot;'side' | 'bottom'&quot;,&quot;section&quot;:&quot;Case study drawer&quot;},&quot;recede&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case study drawer&quot;}}">
+const IMG = (id) => "https://framerusercontent.com/images/" + id + ".png";
+
+const PROJECTS = [
+  {
+    id: "fino", name: "Fino", tagline: "Tax, without the dread", year: "2025",
+    role: "Product Designer", scope: "Research, IA, interaction, visual system", platform: "Mobile",
+    hero: IMG("TaWfBrXKWakQZEtTZp015q8nRqY"),
+    summary: "Germany has over four million freelancers, and most run their tax admin across Word, Excel and a folder of receipts handed to an advisor once a year. I led Fino’s design end to end: a mobile product that absorbs the rules of the German tax system and surfaces only the decision in front of you.",
+    context: [
+      "Invoices must meet strict legal requirements. VAT (Umsatzsteuer) is declared quarterly through ELSTER. Expenses have to be categorised the way the Finanzamt expects, and the Kleinunternehmerregelung splits freelancers into two tiers with different obligations.",
+      "The market leaves a gap. DATEV is built for accountants; Lexoffice and Fastbill stop at invoicing. Nothing handled the full freelance stack on mobile."
+    ],
+    challenge: "Carry the full weight of German freelance tax in the background — and only ever show the freelancer what they need right now.",
+    researchIntro: "Before opening Figma I interviewed eight freelancers across disciplines, audited the market, mapped year-end task flows and worked through the ELSTER filing process myself.",
+    research: [
+      { m: "Interviews · 8 freelancers", f: "Fear of invoicing incorrectly was universal. “Just tell me it’s right” came up in five of eight sessions.", d: "Legal guardrails inside invoice creation: auto-formatting, required-field warnings, VAT logic driven by registration status." },
+      { m: "Competitive audit", f: "No product covered invoices, expenses, tax and filing together on mobile.", d: "Full-stack scope in one app, including direct ELSTER integration." },
+      { m: "Task-flow analysis", f: "Freelancers reconciled income and expenses by hand at year end because nothing offered a live view.", d: "A real-time tax view with quarterly estimates that update as income and expenses are logged." },
+      { m: "ELSTER research", f: "Certificate files and passwords pushed most people to delegate even routine filings.", d: "In-app certificate upload and validation, reducing reliance on an advisor for routine filings." }
+    ],
+    insight: "Freelancers didn’t want flexibility. They wanted guardrails.",
+    northstar: "Confidence through structure",
+    principles: [
+      { t: "Legal correctness is a feature.", d: "Every invoice field exists because the law requires it. The product explains that rather than hiding it." },
+      { t: "One screen, one tax job.", d: "Income tax, VAT, deductions and filing each get a focused view. No dashboards that mix contexts." },
+      { t: "Default to the number that matters now.", d: "Quarterly estimates over annual totals; week-on-week trends over lifetime figures." },
+      { t: "Make the intimidating feel familiar.", d: "Certificate uploads, Vorauszahlung deadlines and Kleinunternehmer toggles behave like ordinary product interactions, not government forms." },
+      { t: "Empty states that teach.", d: "Every empty screen explains what the feature does and offers one direct action." }
+    ],
+    sections: [
+      { title: "Invoices", body: ["A four-step flow — client, invoice details, services, payment — with a persistent tab strip so progress is never ambiguous. The empty state gets out of the way: one line of copy, one action, no tour."],
+        decisions: [
+          { d: "Germany pre-selected on phone input", w: "Optimises for the primary user without locking out international clients." },
+          { d: "Euro as the default currency", w: "The right default for the audience, with a dropdown for international work." },
+          { d: "“Save as draft” always visible", w: "Invoices get built across sessions. Drafts remove the fear of losing work." },
+          { d: "Line items with a live total", w: "Mirrors how German invoices are legally structured." }
+        ],
+        images: [IMG("aYsunRTIgs7Yp16zkI65abvP2X8")] },
+      { title: "Expenses", body: [
+          "A weekly chart for pattern recognition sits above a chronological ledger. Entry opens straight onto the amount field with the keyboard up; the title is optional and suggested.",
+          "Bank sync replaces manual entry for most users. German banks come first, then PayPal and Wise, and a bottom sheet states the security model before anything connects. Categories map directly to the structure the Finanzamt recognises, so exports arrive advisor-ready."
+        ], decisions: [],
+        images: [IMG("IJcOcBs8uciwFtE9Rt2DJ1bbhk"), IMG("DTUmR3V8ku3jbkDbyVERuyUiLA"), IMG("aZGBvYfUdsgam2HNgAvxBt5s")] },
+      { title: "Taxes & ELSTER", body: [
+          "This is where Fino differentiates. A quarterly overview breaks down income tax, VAT and deductions, each one tap from detail. Income tax shows progress against the Freibetrag and a projected year-end position; VAT nets what was collected against what was paid, automatically.",
+          "ELSTER was the hardest flow in the product. Certificate upload, password and validation had to feel routine despite sitting on top of a government security system. Every state is unmistakable, and success leads straight to the tax forms."
+        ], decisions: [],
+        images: [IMG("9HB8pt2MqDVwrij6WVmpDGz1Fs"), IMG("4O1u8EFcIp5ueSImUAlbumWnng")] }
+    ],
+    reflection: [
+      "The most consequential work happened outside Figma. Days spent in German tax law, Finanzamt guidance and forum threads reshaped the information architecture — and killed a combined income/expense dashboard once it was clear VAT-registered and Kleinunternehmer freelancers hold fundamentally different mental models of their money.",
+      "In high-stakes financial products, removing options is worth more than adding them. Every field cut from the invoice form reduced error and increased completion. The product got simpler as my understanding deepened."
+    ]
+  },
+  {
+    id: "platehack", name: "Platehack", tagline: "Healthy eating, fewer decisions", year: "2024",
+    role: "Product Designer", scope: "IA, visual direction, design system", platform: "Web & mobile",
+    hero: IMG("bFQiD0Yc0xcUq8sqtexlfqddNtI"),
+    summary: "Platehack (formerly LazyFit) matches people to doctor-backed meal plans and delivers chef-prepared meals to their door. V1 worked, but felt like a generic SaaS dashboard. I led a ground-up V2: a new visual direction, restructured information architecture and a rebuilt component system across desktop and mobile.",
+    context: [
+      "Healthy eating has a conversion problem: the gap between intention and action is wide. Delivery services optimise for convenience; nutrition apps bury people in manual input. Platehack sat between the two — and V1 looked like it.",
+      "Subscriber feedback converged on three problems: first login felt overwhelming, logging a meal took too many steps, and accurate nutrition data read as clinical rather than motivating."
+    ],
+    challenge: "Make a data-heavy health product feel personal, not clinical — and get people from “I want this” to “logged” with fewer decisions.",
+    researchIntro: "A competitive audit of six products, a review of subscriber feedback, usability walkthroughs with existing subscribers and a full content audit.",
+    research: [
+      { m: "Competitive audit · 6 products", f: "Noom, Lifesum and HelloFresh hide complexity behind a sense of progress and celebrate small wins.", d: "Motivation first: progress indicators, macro donuts and calorie charts communicate wins before numbers." },
+      { m: "Subscriber feedback", f: "Meal swap was the most-used feature — and the most confusing.", d: "Swap rebuilt as a dedicated page with filters and a confirmation step." },
+      { m: "Usability walkthroughs", f: "A daily view alone didn’t give enough context; people wanted their whole week.", d: "Daily, weekly and monthly views, plus a full calendar for planning." },
+      { m: "Content audit", f: "Macros were buried two taps deep, right where people make dietary decisions.", d: "Macros on every meal card; full nutrition facts one tap from detail." }
+    ],
+    insight: "Users didn’t want more features. They wanted fewer decisions.",
+    northstar: "The product does the thinking; the user confirms",
+    principles: [
+      { t: "Fewer decisions, not more features.", d: "The AI recommends, the user confirms. Every screen should remove choices, not add them." },
+      { t: "Progress at a glance.", d: "Macros, calories and weekly coverage readable in under five seconds, without a tap." },
+      { t: "One screen, one job.", d: "Browse, detail, nutrition, swap and subscription each get a focused view." },
+      { t: "Delight where it counts.", d: "Personality lives in confirmation, empty and success states. Everything else stays calm." },
+      { t: "Context shapes hierarchy.", d: "Mobile users decide what to eat now; desktop users plan the week. The hierarchy shifts accordingly." }
+    ],
+    sections: [
+      { title: "Meals browser", body: ["A date-stamped view of today’s plan with persistent Daily, Weekly and Monthly toggles. Each card carries a full-bleed photo, macros and dietary tags, with Log and Swap always visible. On mobile the week collapses into an accordion, and empty days show a quiet empty state instead of a blank row."],
+        decisions: [
+          { d: "Macros on every card", w: "Removes a detail-view round trip at the moment of decision." },
+          { d: "Log and Swap always visible", w: "The two most common actions never require hunting." },
+          { d: "Dietary tags as coloured pills", w: "Meal type and diet scan instantly across a whole plan." },
+          { d: "Date stamp as the header", w: "Grounds returning users in “today” immediately." }
+        ],
+        images: [IMG("xBxBlAyeP6C8Ym0ptYfNngUaFQ")] },
+      { title: "Meal detail & nutrition", body: ["Detail pairs large food photography with macros, tags and the same two actions. Full nutrition opens in the standard FDA/EU label format — a deliberate choice over a custom visualisation, because people can read a familiar label instantly."], decisions: [],
+        images: [IMG("uDfeWnn039tDB9jBRUj9N1MjECk"), IMG("xjKkSeO9elCVAOEO5mTebmwE")] },
+      { title: "Swap meals", body: ["V1’s most complained-about feature became its own page — Find Your Perfect Swap — filterable by meal type, cuisine and diet. A two-step confirmation prevents accidental swaps without slowing intentional ones."], decisions: [],
+        images: [IMG("b2RtMbPJHaMDq1mVgM1Ip8A8Bk"), IMG("RNlOtBEMUAFEi88Na7YHIDZ9EA")] }
+    ],
+    reflection: [
+      "The biggest shift from V1 to V2 was structural, not visual. V1 tried to surface everything; V2 asked what the user needs to do right now, and made that the only obvious option.",
+      "The meal calendar nearly got cut as “too complex for an MVP”. It became one of the most appreciated additions in testing — planning ahead feels different from reacting day to day.",
+      "And a dedicated page is often the right answer to a broken modal. When a feature is used often enough to matter, it deserves a full screen."
+    ]
+  },
+  {
+    id: "mypiitch", name: "MyPiitch", tagline: "Less friction between data and decision", year: "2022",
+    role: "UX/UI Designer", scope: "Discovery, IA, interaction, UI", platform: "Web",
+    hero: IMG("JIrTRs5PIj1iTUEOTWXiYhddo"),
+    summary: "Job boards are too light; enterprise ATSs like Greenhouse and Lever take months to configure. Growing teams sit in the gap. I designed MyPiitch, a recruiter platform that gives small hiring teams one fast, structured surface to post roles, run their pipeline and talk to candidates.",
+    context: [
+      "Hiring is broken on both sides. Recruiters drown in applications that don’t fit; candidates spend hours tailoring pitches for systems that bury them. MyPiitch tackles the recruiter’s side first."
+    ],
+    challenge: "Powerful enough to manage hundreds of applications across many roles — simple enough for a two-person team to run without onboarding.",
+    researchIntro: "Discovery sessions with four recruiters and two hiring managers at early-stage companies, plus a shadowing session during a live hiring sprint.",
+    research: [
+      { m: "Recruiter interviews", f: "Every recruiter kept a personal shortlist outside the ATS. The tool was for logging, not thinking.", d: "The jobs table and pipeline became the primary working surface, not a record system." },
+      { m: "Hiring manager interviews", f: "Managers wanted visibility without being pulled into every decision.", d: "A stage-based pipeline with status — Active, Expired, Draft, Paused — readable at the job level." },
+      { m: "Shadowing session", f: "LinkedIn, an ATS, Gmail and a Google Sheet open at once. Context switching was the single biggest time drain.", d: "Dashboard, messaging, pipeline and jobs unified under one navigation." }
+    ],
+    insight: "Recruiters don’t need more data. They need less friction between data and decision.",
+    northstar: "Make the private spreadsheet redundant",
+    principles: [
+      { t: "The table is the product.", d: "Recruiters live in lists. The jobs table and pipeline are the primary surfaces; everything else supports them." },
+      { t: "Status at a glance.", d: "Every job, candidate and thread communicates its state without being opened." },
+      { t: "Actions in context.", d: "Message, move a stage or boost a post from whatever view you’re already in." },
+      { t: "Two audiences, one flow.", d: "Job creation produces a structured record for the recruiter and a polished listing for candidates." },
+      { t: "Personality without noise.", d: "A single hot-pink accent, reserved for primary actions, active states and key badges." }
+    ],
+    sections: [
+      { title: "Dashboard", body: ["Answers the two questions a recruiter asks every morning: how are my roles performing, and what needs attention today? Headline views and applicants sit up top, with a pitch alert, expiring roles and recent messages below."],
+        decisions: [
+          { d: "Two headline numbers", w: "The metrics recruiters check first, without a trip to the jobs page." },
+          { d: "A distinct pitch card", w: "Reinforces the product’s core concept on every login." },
+          { d: "Expiring soon", w: "Stops strong candidates going cold because a post quietly closed." },
+          { d: "Setup checklist", w: "Guides new users without gating experienced ones." }
+        ],
+        images: [IMG("26qqFfCAssrFdO0IQzAktuzBo8U")] },
+      { title: "Jobs", body: [
+          "Managing and posting roles feel like one product. The table handles hundreds of entries across five tabs, with colour-coded status and an inline Boost action that keeps advertising decisions in context.",
+          "Creating a job is four focused steps in a persistent sidebar. Responsibilities and requirements use an additive list rather than a text field — matching how hiring managers actually think — and the flow ends on a full public preview before anything goes live."
+        ], decisions: [],
+        images: [IMG("EL5MCN29VTeJPdpWeXkQWkXv7o"), IMG("bbXHZZTa0iXykbqIK3PxtUEHee8"), IMG("npcNOR5qtOB4xl5BtfCl0MqIM")] },
+      { title: "Pipeline & candidate profiles", body: ["Candidates move through No Stage, Screen, Interview, Hired and Recycled, with colour-coded role tags that show which openings are heavy at which stage. Opening a candidate flips board to profile without losing context; a dedicated Pitch tab lets candidates present themselves beyond the resume, and messaging and stage controls stay pinned at the top."], decisions: [],
+        images: [IMG("muOV5yZTnItBuahmBSilR0OGKU"), IMG("WgEk95HoUw3lHdljCvgh1I0Mgo")] }
+    ],
+    reflection: [
+      "One hour of shadowing was worth more than every interview. The unofficial workaround is always the real brief — the Google Sheet existed because the ATS couldn’t support how she thought. MyPiitch was designed to make it redundant.",
+      "B2B tools can carry personality and density at once. The pink accent and playful “pitches” framing made a data-heavy product something recruiters wanted to open, not just had to."
+    ]
+  }
+].map((p, i) => ({
+  ...p,
+  n: String(i + 1).padStart(2, "0"),
+  principles: p.principles.map((x, j) => ({ ...x, n: String(j + 1).padStart(2, "0") })),
+  sections: p.sections.map(s => ({ ...s, hasDecisions: s.decisions.length > 0 }))
+}));
+
+const EASE = "cubic-bezier(0.32,0.72,0,1)";
+
+class Component extends DCLogic {
+  state = { tab: "work", w: typeof window !== "undefined" ? window.innerWidth : 1200, theme: "light", ready: false, open: false, active: 0, drag: 0, dragging: false, origin: "50% 50%", time: "" };
+  scrollRef = React.createRef();
+
+  componentDidMount() {
+    let t = "light";
+    try { t = localStorage.getItem("nuel-theme") || "light"; } catch (e) {}
+    document.documentElement.dataset.theme = t;
+    this.setState({ theme: t });
+    this.tick();
+    this.timer = setInterval(() => this.tick(), 1000);
+    this.onKey = (e) => { if (e.key === "Escape" && this.state.open) this.close(); };
+    window.addEventListener("keydown", this.onKey);
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this.onResize);
+    this.setState({ ready: true });
+    const h = (location.hash || "").slice(1);
+    const idx = PROJECTS.findIndex(p => p.id === h);
+    if (idx >= 0) setTimeout(() => this.openAt(idx), 80);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    window.removeEventListener("keydown", this.onKey);
+    window.removeEventListener("resize", this.onResize);
+    document.body.style.overflow = "";
+  }
+  tick() {
+    try {
+      const t = new Date().toLocaleTimeString("en-GB", { timeZone: "Africa/Lagos", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      this.setState({ time: t });
+    } catch (e) {}
+  }
+  openAt(i) {
+    const origin = "50% " + Math.round(window.scrollY + window.innerHeight / 2) + "px";
+    document.body.style.overflow = "hidden";
+    this.setState({ active: i, open: true, drag: 0, origin });
+    if (this.scrollRef.current) this.scrollRef.current.scrollTop = 0;
+    try { history.replaceState(null, "", "#" + PROJECTS[i].id); } catch (e) {}
+  }
+  close() {
+    document.body.style.overflow = "";
+    this.setState({ open: false, drag: 0, dragging: false });
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+  goNext() {
+    const i = (this.state.active + 1) % PROJECTS.length;
+    const el = this.scrollRef.current;
+    this.setState({ active: i });
+    if (el) el.scrollTop = 0;
+    try { history.replaceState(null, "", "#" + PROJECTS[i].id); } catch (e) {}
+  }
+  isBottom() { return (this.props.drawerStyle ?? "side") === "bottom"; }
+  toggleTheme() {
+    const t = this.state.theme === "dark" ? "light" : "dark";
+    const root = document.documentElement;
+    root.classList.add("theme-anim");
+    root.dataset.theme = t;
+    clearTimeout(this.animT);
+    this.animT = setTimeout(() => root.classList.remove("theme-anim"), 400);
+    try { localStorage.setItem("nuel-theme", t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+
+  dragStart(e) {
+    if (e.target.closest("button")) return;
+    this.startPos = this.isBottom() ? e.clientY : e.clientX;
+    e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
+    this.setState({ dragging: true });
+  }
+  dragMove(e) {
+    if (!this.state.dragging) return;
+    const pos = this.isBottom() ? e.clientY : e.clientX;
+    this.setState({ drag: Math.max(0, pos - this.startPos) });
+  }
+  dragEnd() {
+    if (!this.state.dragging) return;
+    if (this.state.drag > 120) this.close();
+    else this.setState({ dragging: false, drag: 0 });
+  }
+
+  renderVals() {
+    const { open, active, drag, dragging, origin } = this.state;
+    const bottom = this.isBottom();
+    const mobile = this.state.w < 640;
+    const recede = (this.props.recede ?? true) && !mobile;
+    const cur = PROJECTS[active];
+    const next = PROJECTS[(active + 1) % PROJECTS.length];
+    const tr = dragging ? "none" : "transform 560ms " + EASE;
+
+    const base = {
+      position: "fixed", zIndex: 51, background: "var(--drawer)", display: "flex", flexDirection: "column",
+      boxShadow: "var(--shadow)", border: "1px solid var(--card-line)", transition: tr, willChange: "transform"
+    };
+    const drawerStyle = bottom
+      ? { ...base, left: 0, right: 0, bottom: 0, height: "calc(100% - 32px)", borderRadius: "18px 18px 0 0", borderBottom: "none",
+          transform: open ? "translateY(" + drag + "px)" : "translateY(105%)" }
+      : mobile
+      ? { ...base, top: 0, right: 0, bottom: 0, width: "100vw", borderRadius: 0, border: "none",
+          transform: open ? "translateX(" + drag + "px)" : "translateX(calc(100% + 160px))" }
+      : { ...base, top: 8, right: 8, bottom: 8, width: "min(880px, calc(100vw - 16px))", borderRadius: 16,
+          transform: open ? "translateX(" + drag + "px)" : "translateX(calc(100% + 160px))" };
+
+    const fade = open ? Math.max(0, 1 - drag / 600) : 0;
+    const overlayStyle = {
+      position: "fixed", inset: 0, zIndex: 50, background: "var(--scrim)",
+      opacity: fade, pointerEvents: open ? "auto" : "none", transition: dragging ? "none" : "opacity 500ms " + EASE
+    };
+
+    const s = bottom ? 0.94 : 0.97;
+    const pageTransform = open && recede ? "scale(" + s + ") translateY(" + (bottom ? 8 : 0) + "px)" : "none";
+
+    return {
+      ready: this.state.ready,
+      isWork: this.state.tab === "work",
+      tabWork: () => this.setState({ tab: "work" }),
+      tabWorkLine: this.state.tab === "work" ? "var(--fg)" : "transparent",
+      tabWorkFg: this.state.tab === "work" ? "var(--fg)" : "var(--muted)",
+      isExperience: this.state.tab === "experience",
+      tabExperience: () => this.setState({ tab: "experience" }),
+      tabExperienceLine: this.state.tab === "experience" ? "var(--fg)" : "transparent",
+      tabExperienceFg: this.state.tab === "experience" ? "var(--fg)" : "var(--muted)",
+      isWords: this.state.tab === "words",
+      tabWords: () => this.setState({ tab: "words" }),
+      tabWordsLine: this.state.tab === "words" ? "var(--fg)" : "transparent",
+      tabWordsFg: this.state.tab === "words" ? "var(--fg)" : "var(--muted)",
+      isTinkerings: this.state.tab === "tinkerings",
+      tabTinkerings: () => this.setState({ tab: "tinkerings" }),
+      tabTinkeringsLine: this.state.tab === "tinkerings" ? "var(--fg)" : "transparent",
+      tabTinkeringsFg: this.state.tab === "tinkerings" ? "var(--fg)" : "var(--muted)",
+      wide: this.state.w >= 560,
+      isDark: this.state.theme === "dark",
+      isLight: this.state.theme !== "dark",
+      themeLabel: this.state.theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+      toggleTheme: () => this.toggleTheme(),
+      time: this.state.time,
+      cur, next, isBottom: bottom,
+      drawerStyle, overlayStyle,
+      pageTransform, pageOrigin: origin, pageRadius: open && recede ? "16px" : "0px",
+      scrollRef: this.scrollRef,
+      openFino: () => this.openAt(0),
+      openPlatehack: () => this.openAt(1),
+      openMypiitch: () => this.openAt(2),
+      close: () => this.close(),
+      goNext: () => this.goNext(),
+      dragStart: (e) => this.dragStart(e),
+      dragMove: (e) => this.dragMove(e),
+      dragEnd: () => this.dragEnd()
+    };
+  }
+}
+</script>
+</body>
+</html>
