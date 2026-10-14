@@ -49,6 +49,72 @@
     introToggle.querySelector(".intro-toggle-label").textContent = open ? "show less" : "more about me";
   });
 
+  /* ---------- Link previews (hover on intro links) ----------
+     Screenshots come from Microlink at view time. Add data-preview-src="…"
+     to a link to use a local image instead. */
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const links = Array.from(document.querySelectorAll("a[data-preview]"));
+    const card = document.createElement("div");
+    card.className = "link-preview";
+    card.setAttribute("aria-hidden", "true");
+    card.innerHTML = '<div class="link-preview-shot"><img alt=""></div><div class="link-preview-host"><span></span><span>↗</span></div>';
+    document.body.appendChild(card);
+    const img = card.querySelector("img");
+    const host = card.querySelector(".link-preview-host span");
+    const cache = {};
+    const CARD_W = 248, CARD_H = 196, GAP = 12;
+    let hideTimer, visible = false;
+
+    const shotSrc = (a) => a.dataset.previewSrc ||
+      "https://api.microlink.io/?url=" + encodeURIComponent(a.href) +
+      "&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800";
+    function preload(a) {
+      const src = shotSrc(a);
+      if (!cache[src]) { cache[src] = new Image(); cache[src].src = src; }
+      return cache[src];
+    }
+
+    function show(a, x, y) {
+      clearTimeout(hideTimer);
+      const pre = preload(a);
+      if (img.getAttribute("src") !== pre.src) img.src = pre.src;
+      card.classList.toggle("is-loading", !pre.complete);
+      card.classList.toggle("is-error", pre.complete && !pre.naturalWidth);
+      host.textContent = new URL(a.href).hostname.replace(/^www\./, "");
+
+      // Anchor to the line of the link under the pointer (links can wrap).
+      const rects = Array.from(a.getClientRects());
+      const r = rects.find((q) => y >= q.top && y <= q.bottom) || rects[0];
+      const cx = x ?? (r.left + r.width / 2);
+      const left = Math.min(Math.max(cx - CARD_W / 2, 8), window.innerWidth - CARD_W - 8);
+      const above = r.top - GAP - CARD_H >= 8;
+      const top = above ? r.top - GAP - CARD_H : r.bottom + GAP;
+      card.style.transformOrigin = (cx - left) + "px " + (above ? "100%" : "0%");
+      if (!visible) { card.style.transition = "none"; }
+      card.style.setProperty("--x", left + "px");
+      card.style.setProperty("--y", top + "px");
+      if (!visible) { void card.offsetWidth; card.style.transition = ""; }
+      card.classList.add("is-visible");
+      visible = true;
+    }
+    function hide() {
+      hideTimer = setTimeout(() => { card.classList.remove("is-visible"); visible = false; }, 60);
+    }
+
+    img.addEventListener("load", () => card.classList.remove("is-loading", "is-error"));
+    img.addEventListener("error", () => { card.classList.remove("is-loading"); card.classList.add("is-error"); });
+    // Warm the cache as soon as the pointer comes near the intro.
+    $("intro").addEventListener("pointerenter", () => links.forEach(preload), { once: true });
+    links.forEach((a) => {
+      a.addEventListener("pointerenter", (e) => show(a, e.clientX, e.clientY));
+      a.addEventListener("pointermove", (e) => show(a, e.clientX, e.clientY));
+      a.addEventListener("pointerleave", hide);
+      a.addEventListener("focus", () => show(a));
+      a.addEventListener("blur", hide);
+    });
+    window.addEventListener("scroll", () => { if (visible) { card.classList.remove("is-visible"); visible = false; } }, { passive: true });
+  }
+
   /* ---------- Tabs ---------- */
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   function selectTab(tab, focus) {

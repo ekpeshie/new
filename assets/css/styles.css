@@ -107,6 +107,37 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .hero .btn-row { padding-top: 4px; }
 .portrait { display: block; width: 48px; height: 48px; object-fit: cover; background: var(--surface); }
 
+/* ---------- Link preview card ---------- */
+.link-preview {
+  position: fixed; left: 0; top: 0; z-index: 40; width: 248px; padding: 6px;
+  background: var(--drawer); border: 1px solid var(--card-line); border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.14);
+  pointer-events: none; opacity: 0;
+  transform: translate(var(--x, 0), var(--y, 0)) scale(0.96);
+  transition: opacity 160ms ease, transform 240ms var(--ease);
+}
+.link-preview.is-visible { opacity: 1; transform: translate(var(--x, 0), var(--y, 0)) scale(1); }
+.link-preview-shot {
+  position: relative; aspect-ratio: 16/10; border-radius: 7px; overflow: hidden;
+  background: var(--surface);
+}
+.link-preview-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: opacity 200ms ease; }
+.link-preview.is-loading img, .link-preview.is-error img { opacity: 0; }
+.link-preview.is-loading .link-preview-shot::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 30%, var(--hover) 50%, transparent 70%) var(--surface);
+  background-size: 200% 100%; animation: preview-shimmer 1.2s ease-in-out infinite;
+}
+.link-preview.is-error .link-preview-shot::after {
+  content: "preview unavailable"; position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--mono); font-size: 11px; color: var(--muted);
+}
+@keyframes preview-shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+.link-preview-host {
+  display: flex; justify-content: space-between; padding: 7px 4px 1px;
+  font-family: var(--mono); font-size: 11px; color: var(--muted);
+}
+
 /* ---------- Tabs ---------- */
 .work { display: flex; flex-direction: column; gap: clamp(28px, 5vw, 40px); padding-bottom: clamp(72px, 13vw, 112px); scroll-margin-top: 72px; }
 .tabs { display: flex; gap: 24px; flex-wrap: wrap; }
@@ -300,5 +331,5 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .next .continue { color: var(--fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .page, .drawer, .scrim, .intro-more, .cs-map, .cs-map .tick, .project .shot img { transition: none !important; }
+  .page, .drawer, .scrim, .intro-more, .link-preview, .cs-map, .cs-map .tick, .project .shot img { transition: none !important; }
 }
