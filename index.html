@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Abu-Ekpeshie — Product Designer</title>
+<meta name="description" content="Emmanuel Abu-Ekpeshie is a product designer working on fintech, health and hiring products.">
+<script>
+  // Apply the saved theme before first paint to avoid a flash. Light is the default.
+  (function () {
+    var t = "light";
+    try { t = localStorage.getItem("nuel-theme") || "light"; } catch (e) {}
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="page" id="page">
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#top" class="brand">Emmanuel Abu-Ekpeshie</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="assets/files/Emmanuel_Abu-Ekpeshie_Resume.pdf" download="Emmanuel_Abu-Ekpeshie_Resume.pdf" target="_blank">download resume ↓</a>
+        <a href="https://calendly.com/abuekpeshie/30min" target="_blank" rel="noopener" class="muted-link wide-only">book a call ↗</a>
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="top" class="hero">
+      <div class="mono"><span id="clock"></span></div>
+      <h1 class="headline">Hey, I'm Emmanuel, currently leading redesign at Tinglemore</h1>
+      <p class="intro">Hey hey, i'm Emmanuel , currently part of the design team at tinglemore. previously led design at 8x platehack, i was also a ux researcher at lloyd's bank (kind of</p>
+      <div class="btn-row">
+        <a href="https://calendly.com/abuekpeshie/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
+        <a href="https://www.linkedin.com/in/emmanuel-abu-ekpeshie/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button type="button" class="tab" role="tab" id="tab-work" aria-controls="panel-work" aria-selected="true">work</button>
+        <button type="button" class="tab" role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="false" tabindex="-1">experience</button>
+        <button type="button" class="tab" role="tab" id="tab-testimonials" aria-controls="panel-testimonials" aria-selected="false" tabindex="-1">testimonials</button>
+        <button type="button" class="tab" role="tab" id="tab-playground" aria-controls="panel-playground" aria-selected="false" tabindex="-1">playground</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-work" aria-labelledby="tab-work">
+        <div class="projects">
+          <a href="#fino" class="project" data-project="fino">
+            <div class="shot"><img src="https://framerusercontent.com/images/TaWfBrXKWakQZEtTZp015q8nRqY.png" alt="fino"></div>
+            <div class="project-meta">
+              <span class="project-name">fino</span>
+              <p class="project-desc">tax management for german freelancers — without the dread.</p>
+            </div>
+          </a>
+          <a href="#platehack" class="project" data-project="platehack">
+            <div class="shot"><img src="https://framerusercontent.com/images/bFQiD0Yc0xcUq8sqtexlfqddNtI.png" alt="platehack"></div>
+            <div class="project-meta">
+              <span class="project-name">platehack</span>
+              <p class="project-desc">a ground-up redesign of an ai nutrition and meal-delivery platform.</p>
+            </div>
+          </a>
+          <a href="#mypiitch" class="project" data-project="mypiitch">
+            <div class="shot"><img src="https://framerusercontent.com/images/JIrTRs5PIj1iTUEOTWXiYhddo.png" alt="mypiitch"></div>
+            <div class="project-meta">
+              <span class="project-name">mypiitch</span>
+              <p class="project-desc">a hiring workspace that replaced four tabs and a private spreadsheet.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-experience" aria-labelledby="tab-experience" hidden>
+        <div class="roles">
+          <div class="role">
+            <span class="role-title"><span>Product Designer</span><span>Tinglemore</span></span>
+            <span class="mono">2025 — Now</span>
+          </div>
+          <div class="role">
+            <span class="role-title"><span>Independent Product Designer</span><span>Fintech &amp; health clients</span></span>
+            <span class="mono">2025</span>
+          </div>
+          <div class="role">
+            <span class="role-title"><span>UX/UI Designer</span><span>Sabinovates</span></span>
+            <span class="mono">2024 — 2025</span>
+          </div>
+          <div class="role">
+            <span class="role-title"><span>Product Designer</span><span>Flo Hiring</span></span>
+            <span class="mono">2022</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-testimonials" aria-labelledby="tab-testimonials" hidden>
+        <div class="quotes">
+          <figure>
+            <blockquote>“Emmanuel transformed our product with detailed, user-focused design. Stunning and practical — the process was smooth and inspiring.”</blockquote>
+            <figcaption class="mono">Bolaji — Co-founder, Platehack</figcaption>
+          </figure>
+          <figure>
+            <blockquote>“His creativity and keen eye for design transformed our product’s interface, making it both visually appealing and highly functional.”</blockquote>
+            <figcaption class="mono">Chris — Founder, Flo Hiring</figcaption>
+          </figure>
+          <figure>
+            <blockquote>“He has always delivered within the agreed timeframe. His attention to detail and desire to understand what he’s working on make him a pleasure to work with.”</blockquote>
+            <figcaption class="mono">Peter — Product Designer, Eligibie.ai</figcaption>
+          </figure>
+          <figure>
+            <blockquote>“A designer who’ll pour their heart and soul into your project — a great addition to any team.”</blockquote>
+            <figcaption class="mono">Naomi — Product Designer, Knight Frank</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-playground" aria-labelledby="tab-playground" hidden>
+        <div class="playground">
+          <div class="shot"><img src="https://framerusercontent.com/images/AHqtNfYYBLAAJhP73ZlF2myrs.png" alt="Exploration 1" loading="lazy"></div>
+          <div class="shot"><img src="https://framerusercontent.com/images/xHBXWWU4QDgPp1OI2klWsJYB6w.png" alt="Exploration 2" loading="lazy"></div>
+          <div class="shot"><img src="https://framerusercontent.com/images/WueifjBWe36Tk8XQrk8apdFID4.png" alt="Exploration 3" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <h2>Got a hard problem? I’d like to hear about it.</h2>
+      <div class="btn-row">
+        <a href="https://calendly.com/abuekpeshie/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
+      </div>
+      <div class="footer-meta mono">
+        <span>© 2026 Emmanuel Abu-Ekpeshie</span>
+        <nav aria-label="Social">
+          <a href="https://www.linkedin.com/in/emmanuel-abu-ekpeshie/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://dribbble.com/emmanuelabu" target="_blank" rel="noopener">Dribbble</a>
+          <a href="https://x.com/abu_nuel" target="_blank" rel="noopener">X</a>
+        </nav>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cs-title">
+  <div class="drawer-bar" id="drawer-bar">
+    <div class="mono">
+      <span id="drawer-label"></span>
+      <button type="button" class="close-btn" id="drawer-close">Close <span>esc</span></button>
+    </div>
+  </div>
+  <div class="drawer-scroll" id="drawer-scroll">
+    <article class="cs" id="case-study"></article>
+  </div>
+</div>
+
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
