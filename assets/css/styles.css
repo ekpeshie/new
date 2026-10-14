@@ -5,7 +5,7 @@ html {
   --line: #e3e3df; --line2: #ececE8; --line-strong: #d4d4cf;
   --surface: #f1f1ee; --drawer: #ffffff; --card: #f5f5f2; --card-line: #e6e6e2;
   --hover: #efefec; --handle: #d0d0cb; --faint: #c2c2bd;
-  --scrim: rgba(20,20,18,0.22); --shadow: -24px 0 80px rgba(0,0,0,0.12);
+  --map-bg: rgba(255,255,255,0.86); --scrim: rgba(20,20,18,0.22); --shadow: -24px 0 80px rgba(0,0,0,0.12);
   --ease: cubic-bezier(0.32,0.72,0,1);
   --sans: -apple-system, BlinkMacSystemFont, 'Geist', system-ui, sans-serif;
   --mono: 'Geist Mono', monospace;
@@ -18,7 +18,7 @@ html[data-theme="dark"] {
   --line: #232321; --line2: #1d1d1b; --line-strong: #2c2c2a;
   --surface: #1a1a19; --drawer: #171716; --card: #1c1c1a; --card-line: #262624;
   --hover: #222220; --handle: #3a3a37; --faint: #4a4a46;
-  --scrim: rgba(0,0,0,0.55); --shadow: -24px 0 80px rgba(0,0,0,0.5);
+  --map-bg: rgba(23,23,22,0.86); --scrim: rgba(0,0,0,0.55); --shadow: -24px 0 80px rgba(0,0,0,0.5);
   color-scheme: dark;
 }
 
@@ -175,30 +175,50 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .close-btn span { color: var(--muted); }
 .drawer-scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
 
-/* ---------- Case study map (sticky section nav, wide screens only) ---------- */
+/* ---------- Case study map ----------
+   A frosted panel that floats in the dimmed overlay, just left of the drawer.
+   It lives inside the drawer so it follows drags and stays in the focus trap. */
 .cs-map { display: none; }
-@media (min-width: 1100px) {
-  .drawer { width: min(1120px, calc(100vw - 16px)); }
-  .cs-layout {
-    display: grid; grid-template-columns: 168px minmax(0, 760px); justify-content: center;
-    column-gap: clamp(24px, 3vw, 48px); padding-left: 24px;
-  }
+@media (min-width: 1180px) {
   .cs-map {
-    position: sticky; top: 0; align-self: start; display: flex; flex-direction: column;
-    padding: 48px 0 32px; max-height: 100%; overflow-y: auto;
-    font-family: var(--sans); font-size: 14px; line-height: 1.5; text-transform: lowercase;
+    position: absolute; top: 0; right: calc(100% + 16px); width: 216px;
+    max-height: calc(100vh - 16px); overflow-y: auto;
+    display: flex; flex-direction: column; gap: 6px; padding: 14px 8px 8px;
+    background: var(--map-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(32px); backdrop-filter: saturate(180%) blur(32px);
+    border: 1px solid var(--card-line); border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.10);
+    font-family: var(--sans); font-size: 13px; line-height: 1.4; text-transform: lowercase;
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity 150ms ease, transform 150ms ease;
   }
+  /* Arrives just after the drawer settles; leaves immediately on close. */
+  .drawer-open .cs-map {
+    opacity: var(--fade, 1); transform: none;
+    transition: opacity 360ms ease 220ms, transform 480ms var(--ease) 220ms;
+  }
+  .dragging .cs-map { transition: none; }
 }
+.cs-map-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0 10px 8px; font-family: var(--mono); font-size: 11px; color: var(--muted);
+}
+.cs-map-count { font-variant-numeric: tabular-nums; }
+.cs-map ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
 .cs-map button {
-  all: unset; box-sizing: border-box; cursor: pointer; color: var(--muted);
-  transition: color 200ms;
+  all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
+  display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 8px;
+  color: var(--muted); transition: color 200ms, background-color 200ms;
 }
-.cs-map button:hover, .cs-map button[aria-current] { color: var(--fg); }
-.cs-map button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 2px; }
-.cs-map-back { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; }
-.cs-map-label { color: var(--muted); margin: 40px 0 16px; }
-.cs-map ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.cs-map li button { display: block; padding: 2px 0; }
+.cs-map button:hover { color: var(--fg); background: var(--hover); }
+.cs-map button[aria-current] { color: var(--fg); }
+.cs-map button:focus-visible { outline: 2px solid var(--fg); outline-offset: -2px; }
+.cs-map .tick {
+  flex: none; width: 14px; height: 1.5px; border-radius: 1px; background: var(--faint);
+  transform: scaleX(0.43); transform-origin: left center;
+  transition: transform 300ms var(--ease), background-color 200ms;
+}
+.cs-map button[aria-current] .tick { transform: none; background: var(--fg); }
 
 /* ---------- Case study ---------- */
 .cs {
@@ -207,7 +227,6 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
   font-family: var(--sans); font-size: 14px; line-height: 1.65; color: var(--fg);
 }
 .cs p { margin: 0; text-wrap: pretty; }
-.cs-layout .cs { margin: 0 auto; width: 100%; }
 .cs [id^="cs-"] { scroll-margin-top: 32px; }
 .cs section { display: flex; flex-direction: column; gap: 16px; }
 .cs-head { display: flex; flex-direction: column; gap: 20px; }
@@ -260,5 +279,5 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .next .continue { color: var(--fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .page, .drawer, .scrim, .project .shot img { transition: none !important; }
+  .page, .drawer, .scrim, .cs-map, .cs-map .tick, .project .shot img { transition: none !important; }
 }

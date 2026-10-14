@@ -160,13 +160,14 @@
       ["cs-reflection", "reflection"]
     ];
     mapList.innerHTML = entries.map(([id, t]) =>
-      `<li><button type="button" data-target="${id}">${esc(t)}</button></li>`).join("");
+      `<li><button type="button" data-target="${id}"><span class="tick" aria-hidden="true"></span>${esc(t)}</button></li>`).join("");
     mapButtons = Array.from(mapList.querySelectorAll("button"));
     mapTargets = entries.map(([id]) => $(id));
   }
 
   /* ---------- Case study map (sticky section nav) ---------- */
   const mapList = $("cs-map-list");
+  const mapCount = $("cs-map-count");
   let mapButtons = [];
   let mapTargets = [];
   let spyFrame = 0;
@@ -178,6 +179,7 @@
     mapTargets.forEach((el, i) => { if (el.getBoundingClientRect().top <= top) current = i; });
     // At the very bottom the last short section may never reach the line.
     if (scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2) current = mapTargets.length - 1;
+    mapCount.textContent = String(current + 1).padStart(2, "0") + " / " + String(mapTargets.length).padStart(2, "0");
     mapButtons.forEach((b, i) => {
       if (i === current) b.setAttribute("aria-current", "true");
       else b.removeAttribute("aria-current");
@@ -191,7 +193,6 @@
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     $(b.dataset.target).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   });
-  $("cs-map-back").addEventListener("click", () => close());
 
   function show(i) {
     active = i;
@@ -255,7 +256,9 @@
   function setDrag(px) {
     drag = px;
     drawer.style.setProperty("--drag", px + "px");
-    scrim.style.setProperty("--fade", Math.max(0, 1 - px / 600));
+    const fade = Math.max(0, 1 - px / 600);
+    scrim.style.setProperty("--fade", fade);
+    drawer.style.setProperty("--fade", fade);
   }
   bar.addEventListener("pointerdown", (e) => {
     if (e.target.closest("button")) return;
