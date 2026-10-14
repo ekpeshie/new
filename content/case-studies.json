@@ -1,0 +1,364 @@
+{
+  "case_studies": [
+    {
+      "slug": "fino",
+      "name": "Fino",
+      "tagline": "Tax, without the dread",
+      "card_description": "tax management for german freelancers — without the dread.",
+      "cover": "https://framerusercontent.com/images/TaWfBrXKWakQZEtTZp015q8nRqY.png",
+      "year": "2025",
+      "role": "Product Designer",
+      "scope": "Research, IA, interaction, visual system",
+      "platform": "Mobile",
+      "hero": "https://framerusercontent.com/images/TaWfBrXKWakQZEtTZp015q8nRqY.png",
+      "summary": "Germany has over four million freelancers, and most run their tax admin across Word, Excel and a folder of receipts handed to an advisor once a year. I led Fino’s design end to end: a mobile product that absorbs the rules of the German tax system and surfaces only the decision in front of you.",
+      "context": [
+        "Invoices must meet strict legal requirements. VAT (Umsatzsteuer) is declared quarterly through ELSTER. Expenses have to be categorised the way the Finanzamt expects, and the Kleinunternehmerregelung splits freelancers into two tiers with different obligations.",
+        "The market leaves a gap. DATEV is built for accountants; Lexoffice and Fastbill stop at invoicing. Nothing handled the full freelance stack on mobile."
+      ],
+      "brief": "Carry the full weight of German freelance tax in the background — and only ever show the freelancer what they need right now.",
+      "discovery_intro": "Before opening Figma I interviewed eight freelancers across disciplines, audited the market, mapped year-end task flows and worked through the ELSTER filing process myself.",
+      "research": [
+        {
+          "method": "Interviews · 8 freelancers",
+          "finding": "Fear of invoicing incorrectly was universal. “Just tell me it’s right” came up in five of eight sessions.",
+          "decision": "Legal guardrails inside invoice creation: auto-formatting, required-field warnings, VAT logic driven by registration status."
+        },
+        {
+          "method": "Competitive audit",
+          "finding": "No product covered invoices, expenses, tax and filing together on mobile.",
+          "decision": "Full-stack scope in one app, including direct ELSTER integration."
+        },
+        {
+          "method": "Task-flow analysis",
+          "finding": "Freelancers reconciled income and expenses by hand at year end because nothing offered a live view.",
+          "decision": "A real-time tax view with quarterly estimates that update as income and expenses are logged."
+        },
+        {
+          "method": "ELSTER research",
+          "finding": "Certificate files and passwords pushed most people to delegate even routine filings.",
+          "decision": "In-app certificate upload and validation, reducing reliance on an advisor for routine filings."
+        }
+      ],
+      "insight": "Freelancers didn’t want flexibility. They wanted guardrails.",
+      "north_star": "Confidence through structure",
+      "principles": [
+        {
+          "title": "Legal correctness is a feature.",
+          "description": "Every invoice field exists because the law requires it. The product explains that rather than hiding it."
+        },
+        {
+          "title": "One screen, one tax job.",
+          "description": "Income tax, VAT, deductions and filing each get a focused view. No dashboards that mix contexts."
+        },
+        {
+          "title": "Default to the number that matters now.",
+          "description": "Quarterly estimates over annual totals; week-on-week trends over lifetime figures."
+        },
+        {
+          "title": "Make the intimidating feel familiar.",
+          "description": "Certificate uploads, Vorauszahlung deadlines and Kleinunternehmer toggles behave like ordinary product interactions, not government forms."
+        },
+        {
+          "title": "Empty states that teach.",
+          "description": "Every empty screen explains what the feature does and offers one direct action."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Invoices",
+          "body": [
+            "A four-step flow — client, invoice details, services, payment — with a persistent tab strip so progress is never ambiguous. The empty state gets out of the way: one line of copy, one action, no tour."
+          ],
+          "decisions": [
+            {
+              "decision": "Germany pre-selected on phone input",
+              "why": "Optimises for the primary user without locking out international clients."
+            },
+            {
+              "decision": "Euro as the default currency",
+              "why": "The right default for the audience, with a dropdown for international work."
+            },
+            {
+              "decision": "“Save as draft” always visible",
+              "why": "Invoices get built across sessions. Drafts remove the fear of losing work."
+            },
+            {
+              "decision": "Line items with a live total",
+              "why": "Mirrors how German invoices are legally structured."
+            }
+          ],
+          "images": [
+            "https://framerusercontent.com/images/aYsunRTIgs7Yp16zkI65abvP2X8.png"
+          ]
+        },
+        {
+          "title": "Expenses",
+          "body": [
+            "A weekly chart for pattern recognition sits above a chronological ledger. Entry opens straight onto the amount field with the keyboard up; the title is optional and suggested.",
+            "Bank sync replaces manual entry for most users. German banks come first, then PayPal and Wise, and a bottom sheet states the security model before anything connects. Categories map directly to the structure the Finanzamt recognises, so exports arrive advisor-ready."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/IJcOcBs8uciwFtE9Rt2DJ1bbhk.png",
+            "https://framerusercontent.com/images/DTUmR3V8ku3jbkDbyVERuyUiLA.png",
+            "https://framerusercontent.com/images/aZGBvYfUdsgam2HNgAvxBt5s.png"
+          ]
+        },
+        {
+          "title": "Taxes & ELSTER",
+          "body": [
+            "This is where Fino differentiates. A quarterly overview breaks down income tax, VAT and deductions, each one tap from detail. Income tax shows progress against the Freibetrag and a projected year-end position; VAT nets what was collected against what was paid, automatically.",
+            "ELSTER was the hardest flow in the product. Certificate upload, password and validation had to feel routine despite sitting on top of a government security system. Every state is unmistakable, and success leads straight to the tax forms."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/9HB8pt2MqDVwrij6WVmpDGz1Fs.png",
+            "https://framerusercontent.com/images/4O1u8EFcIp5ueSImUAlbumWnng.png"
+          ]
+        }
+      ],
+      "reflection": [
+        "The most consequential work happened outside Figma. Days spent in German tax law, Finanzamt guidance and forum threads reshaped the information architecture — and killed a combined income/expense dashboard once it was clear VAT-registered and Kleinunternehmer freelancers hold fundamentally different mental models of their money.",
+        "In high-stakes financial products, removing options is worth more than adding them. Every field cut from the invoice form reduced error and increased completion. The product got simpler as my understanding deepened."
+      ]
+    },
+    {
+      "slug": "platehack",
+      "name": "Platehack",
+      "tagline": "Healthy eating, fewer decisions",
+      "card_description": "a ground-up redesign of an ai nutrition and meal-delivery platform.",
+      "cover": "https://framerusercontent.com/images/bFQiD0Yc0xcUq8sqtexlfqddNtI.png",
+      "year": "2024",
+      "role": "Product Designer",
+      "scope": "IA, visual direction, design system",
+      "platform": "Web & mobile",
+      "hero": "https://framerusercontent.com/images/bFQiD0Yc0xcUq8sqtexlfqddNtI.png",
+      "summary": "Platehack (formerly LazyFit) matches people to doctor-backed meal plans and delivers chef-prepared meals to their door. V1 worked, but felt like a generic SaaS dashboard. I led a ground-up V2: a new visual direction, restructured information architecture and a rebuilt component system across desktop and mobile.",
+      "context": [
+        "Healthy eating has a conversion problem: the gap between intention and action is wide. Delivery services optimise for convenience; nutrition apps bury people in manual input. Platehack sat between the two — and V1 looked like it.",
+        "Subscriber feedback converged on three problems: first login felt overwhelming, logging a meal took too many steps, and accurate nutrition data read as clinical rather than motivating."
+      ],
+      "brief": "Make a data-heavy health product feel personal, not clinical — and get people from “I want this” to “logged” with fewer decisions.",
+      "discovery_intro": "A competitive audit of six products, a review of subscriber feedback, usability walkthroughs with existing subscribers and a full content audit.",
+      "research": [
+        {
+          "method": "Competitive audit · 6 products",
+          "finding": "Noom, Lifesum and HelloFresh hide complexity behind a sense of progress and celebrate small wins.",
+          "decision": "Motivation first: progress indicators, macro donuts and calorie charts communicate wins before numbers."
+        },
+        {
+          "method": "Subscriber feedback",
+          "finding": "Meal swap was the most-used feature — and the most confusing.",
+          "decision": "Swap rebuilt as a dedicated page with filters and a confirmation step."
+        },
+        {
+          "method": "Usability walkthroughs",
+          "finding": "A daily view alone didn’t give enough context; people wanted their whole week.",
+          "decision": "Daily, weekly and monthly views, plus a full calendar for planning."
+        },
+        {
+          "method": "Content audit",
+          "finding": "Macros were buried two taps deep, right where people make dietary decisions.",
+          "decision": "Macros on every meal card; full nutrition facts one tap from detail."
+        }
+      ],
+      "insight": "Users didn’t want more features. They wanted fewer decisions.",
+      "north_star": "The product does the thinking; the user confirms",
+      "principles": [
+        {
+          "title": "Fewer decisions, not more features.",
+          "description": "The AI recommends, the user confirms. Every screen should remove choices, not add them."
+        },
+        {
+          "title": "Progress at a glance.",
+          "description": "Macros, calories and weekly coverage readable in under five seconds, without a tap."
+        },
+        {
+          "title": "One screen, one job.",
+          "description": "Browse, detail, nutrition, swap and subscription each get a focused view."
+        },
+        {
+          "title": "Delight where it counts.",
+          "description": "Personality lives in confirmation, empty and success states. Everything else stays calm."
+        },
+        {
+          "title": "Context shapes hierarchy.",
+          "description": "Mobile users decide what to eat now; desktop users plan the week. The hierarchy shifts accordingly."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Meals browser",
+          "body": [
+            "A date-stamped view of today’s plan with persistent Daily, Weekly and Monthly toggles. Each card carries a full-bleed photo, macros and dietary tags, with Log and Swap always visible. On mobile the week collapses into an accordion, and empty days show a quiet empty state instead of a blank row."
+          ],
+          "decisions": [
+            {
+              "decision": "Macros on every card",
+              "why": "Removes a detail-view round trip at the moment of decision."
+            },
+            {
+              "decision": "Log and Swap always visible",
+              "why": "The two most common actions never require hunting."
+            },
+            {
+              "decision": "Dietary tags as coloured pills",
+              "why": "Meal type and diet scan instantly across a whole plan."
+            },
+            {
+              "decision": "Date stamp as the header",
+              "why": "Grounds returning users in “today” immediately."
+            }
+          ],
+          "images": [
+            "https://framerusercontent.com/images/xBxBlAyeP6C8Ym0ptYfNngUaFQ.png"
+          ]
+        },
+        {
+          "title": "Meal detail & nutrition",
+          "body": [
+            "Detail pairs large food photography with macros, tags and the same two actions. Full nutrition opens in the standard FDA/EU label format — a deliberate choice over a custom visualisation, because people can read a familiar label instantly."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/uDfeWnn039tDB9jBRUj9N1MjECk.png",
+            "https://framerusercontent.com/images/xjKkSeO9elCVAOEO5mTebmwE.png"
+          ]
+        },
+        {
+          "title": "Swap meals",
+          "body": [
+            "V1’s most complained-about feature became its own page — Find Your Perfect Swap — filterable by meal type, cuisine and diet. A two-step confirmation prevents accidental swaps without slowing intentional ones."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/b2RtMbPJHaMDq1mVgM1Ip8A8Bk.png",
+            "https://framerusercontent.com/images/RNlOtBEMUAFEi88Na7YHIDZ9EA.png"
+          ]
+        }
+      ],
+      "reflection": [
+        "The biggest shift from V1 to V2 was structural, not visual. V1 tried to surface everything; V2 asked what the user needs to do right now, and made that the only obvious option.",
+        "The meal calendar nearly got cut as “too complex for an MVP”. It became one of the most appreciated additions in testing — planning ahead feels different from reacting day to day.",
+        "And a dedicated page is often the right answer to a broken modal. When a feature is used often enough to matter, it deserves a full screen."
+      ]
+    },
+    {
+      "slug": "mypiitch",
+      "name": "MyPiitch",
+      "tagline": "Less friction between data and decision",
+      "card_description": "a hiring workspace that replaced four tabs and a private spreadsheet.",
+      "cover": "https://framerusercontent.com/images/JIrTRs5PIj1iTUEOTWXiYhddo.png",
+      "year": "2022",
+      "role": "UX/UI Designer",
+      "scope": "Discovery, IA, interaction, UI",
+      "platform": "Web",
+      "hero": "https://framerusercontent.com/images/JIrTRs5PIj1iTUEOTWXiYhddo.png",
+      "summary": "Job boards are too light; enterprise ATSs like Greenhouse and Lever take months to configure. Growing teams sit in the gap. I designed MyPiitch, a recruiter platform that gives small hiring teams one fast, structured surface to post roles, run their pipeline and talk to candidates.",
+      "context": [
+        "Hiring is broken on both sides. Recruiters drown in applications that don’t fit; candidates spend hours tailoring pitches for systems that bury them. MyPiitch tackles the recruiter’s side first."
+      ],
+      "brief": "Powerful enough to manage hundreds of applications across many roles — simple enough for a two-person team to run without onboarding.",
+      "discovery_intro": "Discovery sessions with four recruiters and two hiring managers at early-stage companies, plus a shadowing session during a live hiring sprint.",
+      "research": [
+        {
+          "method": "Recruiter interviews",
+          "finding": "Every recruiter kept a personal shortlist outside the ATS. The tool was for logging, not thinking.",
+          "decision": "The jobs table and pipeline became the primary working surface, not a record system."
+        },
+        {
+          "method": "Hiring manager interviews",
+          "finding": "Managers wanted visibility without being pulled into every decision.",
+          "decision": "A stage-based pipeline with status — Active, Expired, Draft, Paused — readable at the job level."
+        },
+        {
+          "method": "Shadowing session",
+          "finding": "LinkedIn, an ATS, Gmail and a Google Sheet open at once. Context switching was the single biggest time drain.",
+          "decision": "Dashboard, messaging, pipeline and jobs unified under one navigation."
+        }
+      ],
+      "insight": "Recruiters don’t need more data. They need less friction between data and decision.",
+      "north_star": "Make the private spreadsheet redundant",
+      "principles": [
+        {
+          "title": "The table is the product.",
+          "description": "Recruiters live in lists. The jobs table and pipeline are the primary surfaces; everything else supports them."
+        },
+        {
+          "title": "Status at a glance.",
+          "description": "Every job, candidate and thread communicates its state without being opened."
+        },
+        {
+          "title": "Actions in context.",
+          "description": "Message, move a stage or boost a post from whatever view you’re already in."
+        },
+        {
+          "title": "Two audiences, one flow.",
+          "description": "Job creation produces a structured record for the recruiter and a polished listing for candidates."
+        },
+        {
+          "title": "Personality without noise.",
+          "description": "A single hot-pink accent, reserved for primary actions, active states and key badges."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Dashboard",
+          "body": [
+            "Answers the two questions a recruiter asks every morning: how are my roles performing, and what needs attention today? Headline views and applicants sit up top, with a pitch alert, expiring roles and recent messages below."
+          ],
+          "decisions": [
+            {
+              "decision": "Two headline numbers",
+              "why": "The metrics recruiters check first, without a trip to the jobs page."
+            },
+            {
+              "decision": "A distinct pitch card",
+              "why": "Reinforces the product’s core concept on every login."
+            },
+            {
+              "decision": "Expiring soon",
+              "why": "Stops strong candidates going cold because a post quietly closed."
+            },
+            {
+              "decision": "Setup checklist",
+              "why": "Guides new users without gating experienced ones."
+            }
+          ],
+          "images": [
+            "https://framerusercontent.com/images/26qqFfCAssrFdO0IQzAktuzBo8U.png"
+          ]
+        },
+        {
+          "title": "Jobs",
+          "body": [
+            "Managing and posting roles feel like one product. The table handles hundreds of entries across five tabs, with colour-coded status and an inline Boost action that keeps advertising decisions in context.",
+            "Creating a job is four focused steps in a persistent sidebar. Responsibilities and requirements use an additive list rather than a text field — matching how hiring managers actually think — and the flow ends on a full public preview before anything goes live."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/EL5MCN29VTeJPdpWeXkQWkXv7o.png",
+            "https://framerusercontent.com/images/bbXHZZTa0iXykbqIK3PxtUEHee8.png",
+            "https://framerusercontent.com/images/npcNOR5qtOB4xl5BtfCl0MqIM.png"
+          ]
+        },
+        {
+          "title": "Pipeline & candidate profiles",
+          "body": [
+            "Candidates move through No Stage, Screen, Interview, Hired and Recycled, with colour-coded role tags that show which openings are heavy at which stage. Opening a candidate flips board to profile without losing context; a dedicated Pitch tab lets candidates present themselves beyond the resume, and messaging and stage controls stay pinned at the top."
+          ],
+          "decisions": [],
+          "images": [
+            "https://framerusercontent.com/images/muOV5yZTnItBuahmBSilR0OGKU.png",
+            "https://framerusercontent.com/images/WgEk95HoUw3lHdljCvgh1I0Mgo.png"
+          ]
+        }
+      ],
+      "reflection": [
+        "One hour of shadowing was worth more than every interview. The unofficial workaround is always the real brief — the Google Sheet existed because the ATS couldn’t support how she thought. MyPiitch was designed to make it redundant.",
+        "B2B tools can carry personality and density at once. The pink accent and playful “pitches” framing made a data-heavy product something recruiters wanted to open, not just had to."
+      ]
+    }
+  ]
+}

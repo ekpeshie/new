@@ -1,0 +1,138 @@
+# Pages CMS configuration (https://pagescms.org).
+# Edits made in the CMS are committed to this repo; Vercel redeploys on push.
+
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: case-studies
+    label: Case studies
+    type: file
+    path: content/case-studies.json
+    format: json
+    fields:
+      - name: case_studies
+        label: Case studies
+        description: The order here is the order on the homepage.
+        type: object
+        list: true
+        fields:
+          - name: slug
+            label: Slug
+            description: Short lowercase id used in the link, e.g. "fino" gives yoursite.com/#fino.
+            type: string
+            required: true
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: tagline
+            label: Tagline
+            type: string
+          - name: card_description
+            label: Card description
+            description: One line shown under the project on the homepage.
+            type: string
+          - name: cover
+            label: Card image
+            type: image
+          - name: year
+            label: Year
+            type: string
+          - name: role
+            label: Role
+            type: string
+          - name: scope
+            label: Scope
+            type: string
+          - name: platform
+            label: Platform
+            type: string
+          - name: hero
+            label: Hero image
+            description: Large image at the top of the case study.
+            type: image
+          - name: summary
+            label: Summary
+            type: text
+          - name: context
+            label: Context paragraphs
+            type: text
+            list: true
+          - name: brief
+            label: The brief
+            type: text
+          - name: discovery_intro
+            label: Discovery intro
+            type: text
+          - name: research
+            label: Research findings
+            type: object
+            list: true
+            fields:
+              - { name: method, label: Method, type: string }
+              - { name: finding, label: Finding, type: text }
+              - { name: decision, label: Design decision, type: text }
+          - name: insight
+            label: Core insight
+            type: text
+          - name: north_star
+            label: North star
+            type: string
+          - name: principles
+            label: Principles
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: text }
+          - name: sections
+            label: Key screens
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: body, label: Paragraphs, type: text, list: true }
+              - name: decisions
+                label: Decisions
+                type: object
+                list: true
+                fields:
+                  - { name: decision, label: Decision, type: string }
+                  - { name: why, label: Why, type: text }
+              - { name: images, label: Images, type: image, list: true }
+          - name: reflection
+            label: Reflection paragraphs
+            type: text
+            list: true
+
+  - name: site
+    label: Experience, testimonials & playground
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: experience
+        label: Experience
+        type: object
+        list: true
+        fields:
+          - { name: role, label: Role, type: string }
+          - { name: company, label: Company, type: string }
+          - { name: period, label: Period, type: string, description: 'e.g. "2024 — 2025" or "2025 — Now"' }
+      - name: testimonials
+        label: Testimonials
+        type: object
+        list: true
+        fields:
+          - { name: quote, label: Quote, type: text, description: Without quotation marks. }
+          - { name: name, label: Name, type: string }
+          - { name: title, label: Title, type: string, description: 'e.g. "Co-founder, Platehack"' }
+      - name: playground
+        label: Playground images
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Image, type: image }
+          - { name: alt, label: Description, type: string, description: Short description for screen readers. }
