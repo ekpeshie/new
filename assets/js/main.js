@@ -80,7 +80,7 @@
 
     label.textContent = `${p.n} / ${total} — ${p.name}`;
     article.innerHTML = `
-      <header class="cs-head">
+      <header class="cs-head" id="cs-overview">
         <span class="mono">Case study</span>
         <h2 class="cs-title" id="cs-title">${esc(p.name)} <span class="serif-sub">${esc(p.tagline)}</span></h2>
         <p class="cs-summary">${esc(p.summary)}</p>
@@ -91,13 +91,13 @@
 
       <div class="frame cs-hero"><img src="${esc(p.hero)}" alt="${esc(p.name)}"></div>
 
-      <section>
+      <section id="cs-context">
         <span class="mono">01 — Context</span>
         ${p.context.map((t) => `<p class="text2">${esc(t)}</p>`).join("")}
         <blockquote class="brief"><span class="mono">The brief</span>${esc(p.challenge)}</blockquote>
       </section>
 
-      <section>
+      <section id="cs-discovery">
         <span class="mono">02 — Discovery</span>
         <p class="text2">${esc(p.researchIntro)}</p>
         <div class="findings">
@@ -109,13 +109,13 @@
         </div>
       </section>
 
-      <section class="insight">
+      <section class="insight" id="cs-insight">
         <span class="mono">Core insight</span>
         <p class="insight-quote">“${esc(p.insight)}”</p>
         <span class="mono northstar">North star — ${esc(p.northstar)}</span>
       </section>
 
-      <section class="principles">
+      <section class="principles" id="cs-principles">
         <span class="mono">03 — Principles</span>
         ${p.principles.map((pr) => `
           <div class="principle">
@@ -126,8 +126,8 @@
 
       <section class="screens">
         <span class="mono">04 — Key screens &amp; decisions</span>
-        ${p.sections.map((sec) => `
-          <div class="screen">
+        ${p.sections.map((sec, i) => `
+          <div class="screen" id="cs-screen-${i}">
             <h3>${esc(sec.title)}</h3>
             ${sec.body.map((t) => `<p class="text2">${esc(t)}</p>`).join("")}
             ${sec.hasDecisions ? `<div class="decisions">${sec.decisions.map((d) => `
@@ -136,7 +136,7 @@
           </div>`).join("")}
       </section>
 
-      <section>
+      <section id="cs-reflection">
         <span class="mono">05 — Reflection</span>
         ${p.reflection.map((t) => `<p>${esc(t)}</p>`).join("")}
       </section>
@@ -149,12 +149,55 @@
         <span class="mono continue">Continue →</span>
       </button>`;
     $("next-case").addEventListener("click", goNext);
+
+    const entries = [
+      ["cs-overview", "project overview"],
+      ["cs-context", "context"],
+      ["cs-discovery", "discovery"],
+      ["cs-insight", "core insight"],
+      ["cs-principles", "principles"],
+      ...p.sections.map((sec, i) => ["cs-screen-" + i, sec.title]),
+      ["cs-reflection", "reflection"]
+    ];
+    mapList.innerHTML = entries.map(([id, t]) =>
+      `<li><button type="button" data-target="${id}">${esc(t)}</button></li>`).join("");
+    mapButtons = Array.from(mapList.querySelectorAll("button"));
+    mapTargets = entries.map(([id]) => $(id));
   }
+
+  /* ---------- Case study map (sticky section nav) ---------- */
+  const mapList = $("cs-map-list");
+  let mapButtons = [];
+  let mapTargets = [];
+  let spyFrame = 0;
+
+  function spy() {
+    spyFrame = 0;
+    const top = scroller.getBoundingClientRect().top + 120;
+    let current = 0;
+    mapTargets.forEach((el, i) => { if (el.getBoundingClientRect().top <= top) current = i; });
+    // At the very bottom the last short section may never reach the line.
+    if (scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2) current = mapTargets.length - 1;
+    mapButtons.forEach((b, i) => {
+      if (i === current) b.setAttribute("aria-current", "true");
+      else b.removeAttribute("aria-current");
+    });
+  }
+  scroller.addEventListener("scroll", () => { if (!spyFrame) spyFrame = requestAnimationFrame(spy); }, { passive: true });
+
+  mapList.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-target]");
+    if (!b) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $(b.dataset.target).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
+  $("cs-map-back").addEventListener("click", () => close());
 
   function show(i) {
     active = i;
     render(PROJECTS[i], PROJECTS[(i + 1) % PROJECTS.length]);
     scroller.scrollTop = 0;
+    spy();
     try { history.replaceState(null, "", "#" + PROJECTS[i].id); } catch (e) {}
   }
 
