@@ -34,9 +34,11 @@ Then commit `assets/uploads/` and `content/`.
 
 ## Previewing locally
 
-The page fetches the JSON files, so open it through a local server rather than
-double-clicking `index.html`:
+Each deploy runs `scripts/build.mjs`, which pre-renders every page into `dist/`
+(homepage, one page per case study at `/work/<slug>/`, and `sitemap.xml`) so
+search engines see real HTML. To preview the same thing locally:
 
 ```sh
-python3 -m http.server 8000   # then visit http://localhost:8000
+node scripts/build.mjs
+cd dist && python3 -m http.server 8000   # then visit http://localhost:8000
 ```
