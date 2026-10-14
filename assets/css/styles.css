@@ -81,10 +81,10 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 /* ---------- Hero ---------- */
 .hero { padding: clamp(40px, 8vw, 64px) 0 clamp(40px, 8vw, 56px); display: flex; flex-direction: column; gap: 16px; }
 .hero .mono { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; }
-.headline { margin: 0; font-weight: 400; font-size: clamp(17px, 2.2vw, 19px); line-height: 1.45; letter-spacing: -0.005em; text-wrap: pretty; }
-.intro { margin: 0; max-width: 56ch; color: var(--muted2); font-size: 14px; line-height: 1.65; text-wrap: pretty; }
+.intro { max-width: 56ch; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.65; }
+.intro p { margin: 0; text-wrap: pretty; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .hero .btn-row { padding-top: 4px; }
-.headline + .intro { margin-top: -10px; }
 .portrait { display: block; width: 48px; height: 48px; object-fit: cover; background: var(--surface); }
 
 /* ---------- Tabs ---------- */
