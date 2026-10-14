@@ -85,6 +85,7 @@ html[data-theme="dark"] .icon-btn .icon-moon { display: none; }
 .headline { margin: 0; font-weight: 400; font-size: clamp(17px, 2.2vw, 19px); line-height: 1.45; letter-spacing: -0.005em; text-wrap: pretty; }
 .intro { margin: 0; max-width: 56ch; color: var(--muted2); font-size: 14px; line-height: 1.65; text-wrap: pretty; }
 .hero .btn-row { padding-top: 4px; }
+.portrait { display: block; width: 48px; height: 48px; object-fit: cover; margin-bottom: 16px; background: var(--surface); }
 
 /* ---------- Tabs ---------- */
 .work { display: flex; flex-direction: column; gap: clamp(28px, 5vw, 40px); padding-bottom: clamp(72px, 13vw, 112px); scroll-margin-top: 72px; }
