@@ -170,7 +170,6 @@
 
   /* ---------- Case study map (sticky section nav) ---------- */
   const mapList = $("cs-map-list");
-  const mapCount = $("cs-map-count");
   let mapButtons = [];
   let mapTargets = [];
   let spyFrame = 0;
@@ -182,7 +181,6 @@
     mapTargets.forEach((el, i) => { if (el.getBoundingClientRect().top <= top) current = i; });
     // At the very bottom the last short section may never reach the line.
     if (scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2) current = mapTargets.length - 1;
-    mapCount.textContent = String(current + 1).padStart(2, "0") + " / " + String(mapTargets.length).padStart(2, "0");
     mapButtons.forEach((b, i) => {
       if (i === current) b.setAttribute("aria-current", "true");
       else b.removeAttribute("aria-current");
